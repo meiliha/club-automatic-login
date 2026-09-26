@@ -12,9 +12,9 @@ password = os.getenv("PASSWORD")
 chrome_options = Options()
 chrome_options.add_argument("--headless=new")
 chrome_options.add_argument("--no-sandbox")
-# 删掉 --disable-gpu，新版本chrome不需要，会报错
 chrome_options.add_argument("--disable-dev-shm-usage")
 
+# 自动管理Chrome和driver版本
 driver = webdriver.Chrome(
     service=Service(ChromeDriverManager().install()),
     options=chrome_options
@@ -32,7 +32,7 @@ try:
     driver.find_element(By.NAME, "submit").click()
     time.sleep(5)
 
-    # 签到页面
+    # dzsign签到页面
     driver.get("https://laowang.vip/plugin.php?id=dzsign:dzsign")
     time.sleep(4)
 
