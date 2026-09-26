@@ -12,17 +12,16 @@ password = os.getenv("PASSWORD")
 chrome_options = Options()
 chrome_options.add_argument("--headless=new")
 chrome_options.add_argument("--no-sandbox")
+# 删掉 --disable-gpu，新版本chrome不需要，会报错
 chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--disable-gpu")
 
-# 自动下载ChromeDriver，自动寻找浏览器
 driver = webdriver.Chrome(
     service=Service(ChromeDriverManager().install()),
     options=chrome_options
 )
 
 try:
-    driver.get("shturl.cc/KJU4UvCtbZh6fCHFbyW")
+    driver.get("https://laowang.vip")
     time.sleep(4)
 
     driver.find_element(By.LINK_TEXT, "登录").click()
